@@ -31,7 +31,7 @@ export function UserRecipeList() {
 
   return (
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-1 p-8">
-      <div className="grid gap-x-8 gap-y-4 grid-cols-3">
+      <div className="grid gap-x-8 gap-y-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {list?.map((item) => {
           const mealTiming = item.conditions.mealTiming;
           const cuisineGenre = item.conditions.cuisineGenre;
