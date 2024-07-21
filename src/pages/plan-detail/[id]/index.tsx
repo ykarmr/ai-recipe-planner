@@ -34,7 +34,7 @@ export function PlanDetail() {
   }, [navigate, params.id]);
 
   return (
-    <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-1 p-8 bg-gray-100 min-h-screen">
+    <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-1 p-8">
       {aiRecipe && (
         <>
           <h2 className="font-bold text-3xl mb-4 text-center text-gray-800">

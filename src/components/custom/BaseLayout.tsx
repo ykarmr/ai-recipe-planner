@@ -6,7 +6,9 @@ export function BaseLayout({ children }: { children: ReactNode }) {
   return (
     <AuthContextProvider>
       <Header />
-      {children}
+      <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        {children}
+      </main>
     </AuthContextProvider>
   );
 }

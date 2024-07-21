@@ -139,7 +139,7 @@ export function PlanRecipe() {
   };
 
   return (
-    <div className="flex items-center justify-center bg-gray-100 min-h-screen py-10">
+    <div className="flex items-center justify-center p-10">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl">
         <h2 className="font-bold text-3xl mb-4 text-center text-gray-800">
           献立を提案！！
