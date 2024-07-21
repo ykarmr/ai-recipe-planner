@@ -5,7 +5,6 @@ import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -32,13 +31,7 @@ export function Header() {
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <span>{loginUser.displayName}</span>
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
+              <DropdownMenuLabel>{loginUser.displayName}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 className="cursor-pointer"
