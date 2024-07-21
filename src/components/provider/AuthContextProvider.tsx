@@ -39,8 +39,12 @@ export const AuthContextProvider = ({ children }: Props) => {
   useEffect(() => {
     // auth 初期化時にログインユーザ設定
     auth.onAuthStateChanged(async (user) => {
-      setLoginUser(user);
-      setIsReady(true);
+      if (user) {
+        setLoginUser(user);
+        setIsReady(true);
+      } else {
+        setIsReady(true);
+      }
     });
   }, []);
 
@@ -84,7 +88,7 @@ export const AuthContextProvider = ({ children }: Props) => {
         isReady,
       }}
     >
-      {children}
+      {isReady ? children : null}
     </AuthContext.Provider>
   );
 };
