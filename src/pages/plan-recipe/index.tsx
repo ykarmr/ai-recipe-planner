@@ -25,6 +25,8 @@ const cuisineGenres: SelectListItem[] = [
   { id: 2, title: "洋食", desc: "西洋風の料理" },
   { id: 3, title: "中華", desc: "中国の伝統的な料理" },
   { id: 4, title: "エスニック", desc: "異国情緒あふれる料理" },
+  { id: 5, title: "イタリアン", desc: "イタリアン料理" },
+  { id: 6, title: "スパニッシュ", desc: "スペイン料理" },
 ];
 
 const cookingThemes: SelectListItem[] = [
@@ -32,6 +34,8 @@ const cookingThemes: SelectListItem[] = [
   { id: 2, title: "時短", desc: "短時間で作れる料理" },
   { id: 3, title: "贅沢", desc: "豪華で特別な料理" },
   { id: 4, title: "シンプル", desc: "簡単で基本的な料理" },
+  { id: 5, title: "珍しい", desc: "珍しい料理" },
+  { id: 6, title: "パーティー", desc: "パーティー料理" },
 ];
 
 const cookingDifficulties: SelectListItem[] = [

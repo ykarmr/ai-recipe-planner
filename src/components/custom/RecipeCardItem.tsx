@@ -16,7 +16,9 @@ export function RecipeCardItem({ aiRecipe }: Props) {
     <Link to={`/plan-detail/${aiRecipe.aiRecipeId}`} className="block">
       <Card className="bg-white rounded-xl shadow-lg transform transition hover:scale-105 hover:shadow-2xl m-4 overflow-hidden">
         <CardHeader className="p-5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
-          <p className="text-sm">作成日: {aiRecipe.createdAt}</p>
+          <p className="text-sm">
+            作成日: {new Date(aiRecipe.createdAt).toLocaleString()}
+          </p>
           <p className="text-sm">提案メニュー</p>
           {aiRecipe.recipe.map((item) => (
             <h2 key={item.name} className="text-lg font-bold mt-2 truncate">

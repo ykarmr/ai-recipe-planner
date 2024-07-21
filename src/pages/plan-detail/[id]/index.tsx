@@ -37,31 +37,36 @@ export function PlanDetail() {
     <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-1 p-8">
       {aiRecipe && (
         <>
-          <h2 className="font-bold text-3xl mb-4 text-center text-gray-800">
-            レシピの条件は以下です
-          </h2>
-          <ul className="mt-4 list-disc list-inside bg-white p-6 rounded-lg shadow-md">
-            {aiRecipe.conditions.mealTiming && (
+          <div className="mt-4 bg-white p-6 rounded-lg shadow-md">
+            <p>こちらのレシピの生成条件は以下です</p>
+
+            <ul className="mt-4 list-disc list-inside">
+              {aiRecipe.conditions.mealTiming && (
+                <li className="mb-2">
+                  食事タイミング: {aiRecipe.conditions.mealTiming}
+                </li>
+              )}
+              {aiRecipe.conditions.cuisineGenre && (
+                <li className="mb-2">
+                  料理ジャンル: {aiRecipe.conditions.cuisineGenre}
+                </li>
+              )}
+              {aiRecipe.conditions.cookingThemes && (
+                <li className="mb-2">
+                  料理テーマ: {aiRecipe.conditions.cookingThemes}
+                </li>
+              )}
+              {aiRecipe.conditions.cookingDifficulties && (
+                <li className="mb-2">
+                  料理難易度: {aiRecipe.conditions.cookingDifficulties}
+                </li>
+              )}
               <li className="mb-2">
-                食事タイミング: {aiRecipe.conditions.mealTiming}
+                こちらのレシピの作成日:{" "}
+                {new Date(aiRecipe.createdAt).toLocaleString()}
               </li>
-            )}
-            {aiRecipe.conditions.cuisineGenre && (
-              <li className="mb-2">
-                料理ジャンル: {aiRecipe.conditions.cuisineGenre}
-              </li>
-            )}
-            {aiRecipe.conditions.cookingThemes && (
-              <li className="mb-2">
-                料理テーマ: {aiRecipe.conditions.cookingThemes}
-              </li>
-            )}
-            {aiRecipe.conditions.cookingDifficulties && (
-              <li className="mb-2">
-                料理難易度: {aiRecipe.conditions.cookingDifficulties}
-              </li>
-            )}
-          </ul>
+            </ul>
+          </div>
 
           <div className="grid gap-8 mt-8 grid-cols-1">
             {aiRecipe.recipe.map((recipe) => (
