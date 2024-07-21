@@ -14,7 +14,7 @@ export function RecipeCardItem({ aiRecipe }: Props) {
 
   return (
     <Link to={`/plan-detail/${aiRecipe.aiRecipeId}`} className="block">
-      <Card className="bg-white rounded-lg shadow-lg transform transition sm:hover:scale-105 sm:hover:shadow-xl m-2">
+      <Card className="bg-white rounded-lg shadow-lg transform transition hover:scale-105 hover:shadow-xl m-2">
         <CardHeader className="p-4 border-b border-gray-200">
           <p className="text-sm text-gray-500">作成日: {aiRecipe.createdAt}</p>
           <p className="text-sm text-gray-500">提案メニュー</p>
