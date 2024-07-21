@@ -33,9 +33,5 @@ export function UserRecipeList() {
     })();
   }, [navigate, params.uid]);
 
-  return (
-    <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-1 p-8 bg-gray-100 min-h-screen">
-      {list && <RecipeCardList list={list} />}
-    </div>
-  );
+  return <div className="p-8">{list && <RecipeCardList list={list} />}</div>;
 }

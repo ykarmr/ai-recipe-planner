@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export function RootPage() {
   return (
-    <div className="flex flex-col items-center gap-9 py-10">
-      <h1 className="mt-16">
+    <div className="flex flex-col items-center gap-9">
+      <h1>
         <img src="/logo.svg" alt="Logo" className="w-96 mx-auto" />
       </h1>
       <p className="text-xl text-center text-gray-800 px-4">
