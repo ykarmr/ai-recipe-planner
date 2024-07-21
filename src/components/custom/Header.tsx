@@ -18,7 +18,7 @@ export function Header() {
   const { login, logout, loginUser } = useAuthContext();
 
   return (
-    <header className="p-3 flex justify-between items-center px-5">
+    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 p-3 flex justify-between items-center px-5">
       <Link to="/">
         <img src="/logo.svg" alt="Logo" />
       </Link>
