@@ -72,6 +72,12 @@ export function PlanRecipe() {
         );
         return;
       }
+
+      if (numberOfRecipe < 1 || numberOfRecipe > 5) {
+        toast("献立数は1から5の間にしてください");
+        return;
+      }
+
       const schema = JSON.stringify(recipeSchema);
 
       const mealTiming = selectMealTiming?.title
