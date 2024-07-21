@@ -34,6 +34,7 @@ export function Header() {
               <DropdownMenuLabel>{loginUser.displayName}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
+                <DropdownMenuLabel>機能メニュー</DropdownMenuLabel>
                 <DropdownMenuItem>
                   <Link to={`/plan-recipe`} className="cursor-pointer">
                     <span>献立を作成</span>
