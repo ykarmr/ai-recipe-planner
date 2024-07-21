@@ -1,4 +1,4 @@
-import RecipeCard from "@/components/custom/RecipeCard";
+import { RecipeCardList } from "@/components/custom/RecipeCardList";
 import { db } from "@/lib/firebase";
 import { AIRecipe } from "@/type/recipe";
 import { query, where, collection, getDocs } from "firebase/firestore";
@@ -30,8 +30,8 @@ export function UserRecipeList() {
   }, [navigate, params.uid]);
 
   return (
-    <div className="sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-1 p-8">
-      {list && <RecipeCard list={list} />}
+    <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-1 p-8 bg-gray-100 min-h-screen">
+      {list && <RecipeCardList list={list} />}
     </div>
   );
 }

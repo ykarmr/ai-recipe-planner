@@ -5,7 +5,7 @@ import { getDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-function PlanDetail() {
+export function PlanDetail() {
   const params = useParams();
   const [aiRecipe, setAIRecipe] = useState<AIRecipe | null>(null);
   const navigate = useNavigate();
@@ -29,50 +29,63 @@ function PlanDetail() {
   }, [navigate, params.id]);
 
   return (
-    <div className="sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-1 p-8">
+    <div className="sm:px-10 md:px-32 lg:px-56 xl:px-72 px-5 mt-1 p-8 bg-gray-100 min-h-screen">
       {aiRecipe && (
         <>
-          <h2 className="font-bold text-3xl">レシピの条件は以下です</h2>
-          <ul className="mt-4 list-disc list-inside">
+          <h2 className="font-bold text-3xl mb-4 text-center text-gray-800">
+            レシピの条件は以下です
+          </h2>
+          <ul className="mt-4 list-disc list-inside bg-white p-6 rounded-lg shadow-md">
             {aiRecipe.conditions.mealTiming && (
-              <li>食事タイミング: {aiRecipe.conditions.mealTiming}</li>
+              <li className="mb-2">
+                食事タイミング: {aiRecipe.conditions.mealTiming}
+              </li>
             )}
             {aiRecipe.conditions.cuisineGenre && (
-              <li>料理ジャンル: {aiRecipe.conditions.cuisineGenre}</li>
+              <li className="mb-2">
+                料理ジャンル: {aiRecipe.conditions.cuisineGenre}
+              </li>
             )}
             {aiRecipe.conditions.cookingThemes && (
-              <li>料理テーマ: {aiRecipe.conditions.cookingThemes}</li>
+              <li className="mb-2">
+                料理テーマ: {aiRecipe.conditions.cookingThemes}
+              </li>
             )}
             {aiRecipe.conditions.cookingDifficulties && (
-              <li>料理難易度: {aiRecipe.conditions.cookingDifficulties}</li>
+              <li className="mb-2">
+                料理難易度: {aiRecipe.conditions.cookingDifficulties}
+              </li>
             )}
           </ul>
 
-          <div className="flex flex-col mt-8 gap-8">
+          <div className="grid gap-8 mt-8 grid-cols-1">
             {aiRecipe.recipe.map((recipe) => (
-              <Card key={recipe.name}>
-                <CardHeader>
+              <Card
+                key={recipe.name}
+                className="bg-white rounded-lg shadow-lg transform transition hover:scale-105 hover:shadow-xl"
+              >
+                <CardHeader className="bg-gray-800 text-white p-4 rounded-t-lg">
                   <h3 className="text-2xl font-medium">{recipe.name}</h3>
                 </CardHeader>
-                <CardContent>
-                  <p>この料理にかかるお金: {recipe.price}</p>
-                  <p>この料理の調理時間: {recipe.time}</p>
-                  <p>この料理に必要な食材</p>
+                <CardContent className="p-4">
+                  <p className="mb-2">この料理にかかるお金: {recipe.price}</p>
+                  <p className="mb-2">この料理の調理時間: {recipe.time}</p>
+                  <p className="mb-2">この料理に必要な食材:</p>
                   <ul className="mt-4 list-disc list-inside">
                     {recipe.ingredients.map((item) => {
                       return (
-                        <li>
-                          {item.name} {item.quantity}({item.price})
+                        <li key={item.name} className="mb-1">
+                          {item.name} {item.quantity} ({item.price})
                         </li>
                       );
                     })}
                   </ul>
 
                   <div className="mt-4">
-                    <p>調理方法</p>
+                    <p className="mb-2">調理方法:</p>
                     <ul className="list-decimal list-inside mt-2">
                       {recipe.steps.map((item, index) => (
-                        <li className="" key={index}>
+                        <li className="mb-1" key={index}>
                           {item.detail}: {item.time}
                         </li>
                       ))}
@@ -87,5 +100,3 @@ function PlanDetail() {
     </div>
   );
 }
-
-export default PlanDetail;

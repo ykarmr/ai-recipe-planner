@@ -5,7 +5,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Toaster } from "sonner";
 import { RootPage } from "./pages/root-page.tsx";
 import { PlanRecipe } from "./pages/plan-recipe/index.tsx";
-import PlanDetail from "./pages/plan-detail/[id]/index.tsx";
+import { PlanDetail } from "./pages/plan-detail/[id]/index.tsx";
 import "@/lib/firebase.ts";
 import { NotFound } from "./pages/not-found/index.tsx";
 import { UserRecipeList } from "./pages/user-recipe-list/index.tsx";
