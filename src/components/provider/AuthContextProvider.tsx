@@ -9,6 +9,7 @@ import {
   createContext,
 } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 type AuthContextType = {
   isReady: boolean;
@@ -68,14 +69,18 @@ export const AuthContextProvider = ({ children }: Props) => {
       setLoginUser(user);
       navigate("/plan-recipe");
     } catch (e) {
-      console.log(e);
+      toast("ログインエラー");
     }
   };
 
   // ログアウト処理
   const logout = async () => {
-    await signOut(auth);
-    setLoginUser(null);
+    try {
+      await signOut(auth);
+      setLoginUser(null);
+    } catch {
+      toast("ログアウトエラー");
+    }
   };
 
   // ログイン情報設定したProvider
