@@ -132,7 +132,7 @@ export function PlanRecipe() {
 
       navigate(`/plan-detail/${aiRecipeId}`);
     } catch (e) {
-      console.log(e);
+      toast("エラーが発生しました");
     } finally {
       setIsLoading(false);
     }

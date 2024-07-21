@@ -4,6 +4,7 @@ import { AIRecipe } from "@/type/recipe";
 import { getDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
 
 export function PlanDetail() {
   const params = useParams();
@@ -17,14 +18,18 @@ export function PlanDetail() {
         return;
       }
 
-      const aiRecipeDoc = await getDoc(doc(db, "aiRecipes", params.id));
-      if (!aiRecipeDoc.exists()) {
-        navigate("/not-found");
-        return;
-      }
+      try {
+        const aiRecipeDoc = await getDoc(doc(db, "aiRecipes", params.id));
+        if (!aiRecipeDoc.exists()) {
+          navigate("/not-found");
+          return;
+        }
 
-      const data = aiRecipeDoc.data();
-      setAIRecipe(data as AIRecipe);
+        const data = aiRecipeDoc.data();
+        setAIRecipe(data as AIRecipe);
+      } catch {
+        toast("エラーが発生しました");
+      }
     })();
   }, [navigate, params.id]);
 
