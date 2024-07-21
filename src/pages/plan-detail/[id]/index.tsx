@@ -38,30 +38,24 @@ export function PlanDetail() {
       {aiRecipe && (
         <>
           <div className="mt-4 bg-white p-6 rounded-lg shadow-md">
-            <p>こちらのレシピの生成条件は以下です</p>
+            <p className="text-lg font-semibold mb-4">
+              こちらのレシピの生成条件は以下です
+            </p>
 
-            <ul className="mt-4 list-disc list-inside">
+            <ul className="mt-4 list-disc list-inside space-y-2">
               {aiRecipe.conditions.mealTiming && (
-                <li className="mb-2">
-                  食事タイミング: {aiRecipe.conditions.mealTiming}
-                </li>
+                <li>食事タイミング: {aiRecipe.conditions.mealTiming}</li>
               )}
               {aiRecipe.conditions.cuisineGenre && (
-                <li className="mb-2">
-                  料理ジャンル: {aiRecipe.conditions.cuisineGenre}
-                </li>
+                <li>料理ジャンル: {aiRecipe.conditions.cuisineGenre}</li>
               )}
               {aiRecipe.conditions.cookingThemes && (
-                <li className="mb-2">
-                  料理テーマ: {aiRecipe.conditions.cookingThemes}
-                </li>
+                <li>料理テーマ: {aiRecipe.conditions.cookingThemes}</li>
               )}
               {aiRecipe.conditions.cookingDifficulties && (
-                <li className="mb-2">
-                  料理難易度: {aiRecipe.conditions.cookingDifficulties}
-                </li>
+                <li>料理難易度: {aiRecipe.conditions.cookingDifficulties}</li>
               )}
-              <li className="mb-2">
+              <li>
                 こちらのレシピの作成日:{" "}
                 {new Date(aiRecipe.createdAt).toLocaleString()}
               </li>
@@ -72,19 +66,23 @@ export function PlanDetail() {
             {aiRecipe.recipe.map((recipe) => (
               <Card
                 key={recipe.name}
-                className="bg-white rounded-lg shadow-lg sm:transform sm:transition sm:hover:scale-105 sm:hover:shadow-xl"
+                className="bg-white rounded-lg shadow-lg sm:transition-transform sm:transform sm:hover:scale-105"
               >
                 <CardHeader className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 rounded-t-lg">
                   <h3 className="text-2xl font-medium">{recipe.name}</h3>
                 </CardHeader>
                 <CardContent className="p-4">
-                  <p className="mb-2">この料理にかかるお金: {recipe.price}</p>
-                  <p className="mb-2">この料理の調理時間: {recipe.time}</p>
-                  <p className="mb-2">この料理に必要な食材:</p>
-                  <ul className="mt-4 list-disc list-inside">
+                  <p className="mb-2 text-lg">
+                    この料理にかかるお金: {recipe.price}
+                  </p>
+                  <p className="mb-2 text-lg">
+                    この料理の調理時間: {recipe.time}
+                  </p>
+                  <p className="mb-2 text-lg">この料理に必要な食材:</p>
+                  <ul className="mt-4 list-disc list-inside space-y-1">
                     {recipe.ingredients.map((item) => {
                       return (
-                        <li key={item.name} className="mb-1">
+                        <li key={item.name}>
                           {item.name} {item.quantity} ({item.price})
                         </li>
                       );
@@ -92,10 +90,10 @@ export function PlanDetail() {
                   </ul>
 
                   <div className="mt-4">
-                    <p className="mb-2">調理方法:</p>
-                    <ul className="list-decimal list-inside mt-2">
+                    <p className="mb-2 text-lg">調理方法:</p>
+                    <ul className="list-decimal list-inside mt-2 space-y-1">
                       {recipe.steps.map((item, index) => (
-                        <li className="mb-1" key={index}>
+                        <li key={index}>
                           {item.detail} ({item.time})
                         </li>
                       ))}
