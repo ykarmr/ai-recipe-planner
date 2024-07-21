@@ -72,7 +72,7 @@ export function PlanDetail() {
             {aiRecipe.recipe.map((recipe) => (
               <Card
                 key={recipe.name}
-                className="bg-white rounded-lg shadow-lg transform transition hover:scale-105 hover:shadow-xl"
+                className="bg-white rounded-lg shadow-lg sm:transform sm:transition sm:hover:scale-105 sm:hover:shadow-xl"
               >
                 <CardHeader className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 rounded-t-lg">
                   <h3 className="text-2xl font-medium">{recipe.name}</h3>
