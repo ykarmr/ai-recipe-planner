@@ -24,42 +24,42 @@ export function Header() {
       </Link>
       <div>
         {loginUser ? (
-          <div className="flex items-center gap-3">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Avatar className="cursor-pointer">
-                  <AvatarImage
-                    src={loginUser.photoURL ?? ""}
-                    alt="User avatar"
-                  />
-                  <AvatarFallback>CN</AvatarFallback>
-                </Avatar>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>
-                    <span>{loginUser.email}</span>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  className="cursor-pointer"
-                  onClick={() => navigate(`/user/${loginUser?.uid}/recipe`)}
-                >
-                  <span>過去提案された内容を見る</span>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Avatar className="cursor-pointer hover:shadow-md transition-shadow duration-300">
+                <AvatarImage src={loginUser.photoURL ?? ""} alt="User avatar" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <span>{loginUser.displayName}</span>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer" onClick={logout}>
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                className="cursor-pointer"
+                onClick={() => navigate(`/user/${loginUser?.uid}/recipe`)}
+              >
+                <span>過去提案された内容を見る</span>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="cursor-pointer" onClick={logout}>
+                <LogOut className="mr-2 h-4 w-4 text-red-500" />
+                <span className="text-red-500">Log out</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         ) : (
-          <Button onClick={login}>Sign In</Button>
+          <Button
+            onClick={login}
+            className="bg-blue-500 hover:bg-blue-600 text-white"
+          >
+            Sign In
+          </Button>
         )}
       </div>
     </header>
