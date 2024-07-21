@@ -5,15 +5,15 @@ import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function Header() {
-  const navigate = useNavigate();
   const { login, logout, loginUser } = useAuthContext();
 
   return (
@@ -33,12 +33,21 @@ export function Header() {
             <DropdownMenuContent className="w-56">
               <DropdownMenuLabel>{loginUser.displayName}</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem
-                className="cursor-pointer"
-                onClick={() => navigate(`/user/${loginUser?.uid}/recipe`)}
-              >
-                <span>過去提案された内容を見る</span>
-              </DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <Link to={`/plan-recipe`} className="cursor-pointer">
+                    <span>献立を作成</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link
+                    to={`/user/${loginUser?.uid}/recipe`}
+                    className="cursor-pointer"
+                  >
+                    <span>過去提案された内容を見る</span>
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="cursor-pointer" onClick={logout}>
                 <LogOut className="mr-2 h-4 w-4 text-red-500" />
