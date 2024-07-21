@@ -22,11 +22,9 @@ function PlanDetail() {
         navigate("/not-found");
         return;
       }
-      console.log("test");
 
       const data = aiRecipeDoc.data();
       setAIRecipe(data as AIRecipe);
-      // setAIRecipe();
     })();
   }, [navigate, params.id]);
 
