@@ -34,7 +34,7 @@ export function PlanDetail() {
   }, [navigate, params.id]);
 
   return (
-    <div className="p-8">
+    <div className="p-5 sm:p-10">
       {aiRecipe && (
         <>
           <div className="mt-4 bg-white p-6 rounded-lg shadow-md">
