@@ -12,7 +12,6 @@ import { UserRecipeList } from "./pages/user-recipe-list/index.tsx";
 import { BaseLayout } from "./components/custom/BaseLayout.tsx";
 import LoginGuard from "./components/guard/LoginGuard.tsx";
 import { NotLogin } from "./pages/not-login/index.tsx";
-import { ThemeProvider } from "./components/provider/ThemeProvider.tsx";
 
 const router = createBrowserRouter([
   {
@@ -66,9 +65,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <Toaster />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <Toaster />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

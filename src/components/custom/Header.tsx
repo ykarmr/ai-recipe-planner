@@ -13,8 +13,6 @@ import {
 } from "../ui/dropdown-menu";
 import { Link, useNavigate } from "react-router-dom";
 
-import { ModeToggle } from "./ModeToggle";
-
 export function Header() {
   const navigate = useNavigate();
   const { login, logout, loginUser } = useAuthContext();
@@ -27,7 +25,6 @@ export function Header() {
       <div>
         {loginUser ? (
           <div className="flex items-center gap-3">
-            <ModeToggle />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Avatar className="cursor-pointer">
