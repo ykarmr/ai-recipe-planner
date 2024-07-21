@@ -91,7 +91,7 @@ export function PlanDetail() {
                     <ul className="list-decimal list-inside mt-2">
                       {recipe.steps.map((item, index) => (
                         <li className="mb-1" key={index}>
-                          {item.detail}: {item.time}
+                          {item.detail} ({item.time})
                         </li>
                       ))}
                     </ul>
