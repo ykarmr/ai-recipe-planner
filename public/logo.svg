@@ -1,5 +1,5 @@
 <svg width="175" height="40" xmlns="http://www.w3.org/2000/svg">
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#333">
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#333">
     今日の <tspan fill="#e63946">AI</tspan> 食卓プランナー
   </text>
 </svg>
