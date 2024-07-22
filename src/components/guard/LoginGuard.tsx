@@ -2,7 +2,7 @@ import { ReactNode, useEffect } from "react";
 import { useAuthContext } from "../provider/AuthContextProvider";
 import { useNavigate } from "react-router-dom";
 
-function LoginGuard({ children }: { children: ReactNode }) {
+export function LoginGuard({ children }: { children: ReactNode }) {
   const { loginUser, isReady } = useAuthContext();
   const navigate = useNavigate();
 
@@ -14,5 +14,3 @@ function LoginGuard({ children }: { children: ReactNode }) {
 
   return children;
 }
-
-export default LoginGuard;

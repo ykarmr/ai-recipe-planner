@@ -10,7 +10,7 @@ type Props = {
   onSelect: (item?: SelectListItem) => void;
 };
 
-function SelectList(props: Props) {
+export function SelectList(props: Props) {
   const { list, selectValue, onSelect } = props;
   const handleSelect = (item: SelectListItem) => {
     if (selectValue?.id === item.id) {
@@ -40,5 +40,3 @@ function SelectList(props: Props) {
     </>
   );
 }
-
-export default SelectList;

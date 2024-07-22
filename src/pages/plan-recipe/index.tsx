@@ -1,4 +1,4 @@
-import SelectList, { SelectListItem } from "@/components/custom/SelectList";
+import { SelectList, SelectListItem } from "@/components/custom/SelectList";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { db } from "@/lib/firebase";
@@ -72,7 +72,7 @@ export function PlanRecipe() {
         !selectCookingDifficulties?.title
       ) {
         toast(
-          "食事タイミング、料理ジャンル、料理テーマ、料理難易度のどれか一つは必須です"
+          "食事タイミング、料理ジャンル、料理テーマ、料理難易度のどれか一つは必須です",
         );
         return;
       }

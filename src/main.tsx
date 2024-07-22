@@ -10,7 +10,7 @@ import "@/lib/firebase.ts";
 import { NotFound } from "./pages/not-found/index.tsx";
 import { UserRecipeList } from "./pages/user-recipe-list/index.tsx";
 import { BaseLayout } from "./components/custom/BaseLayout.tsx";
-import LoginGuard from "./components/guard/LoginGuard.tsx";
+import { LoginGuard } from "./components/guard/LoginGuard.tsx";
 import { NotLogin } from "./pages/not-login/index.tsx";
 
 const router = createBrowserRouter([
@@ -46,7 +46,6 @@ const router = createBrowserRouter([
         path: "/",
         element: <RootPage />,
       },
-
       {
         path: "/not-found",
         element: <NotFound />,
@@ -67,5 +66,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Toaster />
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
