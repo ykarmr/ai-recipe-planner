@@ -4,7 +4,7 @@ import "./index.css";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Toaster } from "sonner";
 import { PlanRecipePage } from "./pages/plan-recipe/index.tsx";
-import { PlanDetailPage } from "./pages/plan-detail/[id]/index.tsx";
+import { PlanDetailPage } from "./pages/plan-detail/index.tsx";
 import { NotFoundPage } from "./pages/not-found/index.tsx";
 import { UserRecipeListPage } from "./pages/user-recipe-list/index.tsx";
 import { BaseLayout } from "./components/custom/BaseLayout.tsx";
