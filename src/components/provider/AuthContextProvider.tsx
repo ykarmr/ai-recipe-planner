@@ -38,15 +38,19 @@ export const AuthContextProvider = ({ children }: Props) => {
   const [isReady, setIsReady] = useState<boolean>(false);
   // 起動時ログイン処理(既にログインしてる場合, ユーザ設定)
   useEffect(() => {
-    // auth 初期化時にログインユーザ設定
-    auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        setLoginUser(user);
-        setIsReady(true);
-      } else {
-        setIsReady(true);
-      }
-    });
+    try {
+      // auth 初期化時にログインユーザ設定
+      auth.onAuthStateChanged(async (user) => {
+        if (user) {
+          setLoginUser(user);
+          setIsReady(true);
+        } else {
+          setIsReady(true);
+        }
+      });
+    } catch {
+      toast("ログイン情報取得時にエラーが発生しました");
+    }
   }, []);
 
   // ログイン処理
