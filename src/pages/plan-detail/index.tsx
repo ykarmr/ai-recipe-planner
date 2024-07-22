@@ -1,10 +1,11 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { db } from "@/lib/firebase";
 import { AIRecipe } from "@/type/recipe";
 import { getDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
+import { ConditionsCard } from "./components/ConditionsCard";
+import { RecipeList } from "./components/RecipeList";
 
 export function PlanDetailPage() {
   const params = useParams();
@@ -34,76 +35,15 @@ export function PlanDetailPage() {
   }, [navigate, params.id]);
 
   return (
-    <div className="p-5 sm:p-10">
+    <div className="p-5 sm:p-10 ">
       {aiRecipe && (
-        <>
-          <div className="mt-4 bg-white p-6 rounded-lg shadow-md">
-            <p className="text-lg font-semibold mb-4">
-              こちらのレシピの生成条件は以下です
-            </p>
-
-            <ul className="mt-4 list-disc list-inside space-y-2">
-              {aiRecipe.conditions.mealTiming && (
-                <li>食事タイミング: {aiRecipe.conditions.mealTiming}</li>
-              )}
-              {aiRecipe.conditions.cuisineGenre && (
-                <li>料理ジャンル: {aiRecipe.conditions.cuisineGenre}</li>
-              )}
-              {aiRecipe.conditions.cookingThemes && (
-                <li>料理テーマ: {aiRecipe.conditions.cookingThemes}</li>
-              )}
-              {aiRecipe.conditions.cookingDifficulties && (
-                <li>料理難易度: {aiRecipe.conditions.cookingDifficulties}</li>
-              )}
-              <li>
-                こちらのレシピの作成日:{" "}
-                {new Date(aiRecipe.createdAt).toLocaleString()}
-              </li>
-            </ul>
-          </div>
-
-          <div className="grid gap-8 mt-8 grid-cols-1">
-            {aiRecipe.recipe.map((recipe) => (
-              <Card
-                key={recipe.name}
-                className="bg-white rounded-lg shadow-lg sm:transition-transform sm:transform sm:hover:scale-105"
-              >
-                <CardHeader className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 rounded-t-lg">
-                  <h3 className="text-2xl font-medium">{recipe.name}</h3>
-                </CardHeader>
-                <CardContent className="p-4">
-                  <p className="mb-2 text-lg">
-                    この料理にかかるお金: {recipe.price}
-                  </p>
-                  <p className="mb-2 text-lg">
-                    この料理の調理時間: {recipe.time}
-                  </p>
-                  <p className="mb-2 text-lg">この料理に必要な食材:</p>
-                  <ul className="mt-4 list-disc list-inside space-y-1">
-                    {recipe.ingredients.map((item) => {
-                      return (
-                        <li key={item.name}>
-                          {item.name} {item.quantity} ({item.price})
-                        </li>
-                      );
-                    })}
-                  </ul>
-
-                  <div className="mt-4">
-                    <p className="mb-2 text-lg">調理方法:</p>
-                    <ul className="list-decimal list-inside mt-2 space-y-1">
-                      {recipe.steps.map((item, index) => (
-                        <li key={index}>
-                          {item.detail} ({item.time})
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </>
+        <div className="space-y-8">
+          <ConditionsCard
+            conditions={aiRecipe.conditions}
+            createdAt={aiRecipe.createdAt}
+          />
+          <RecipeList recipes={aiRecipe.recipe} />
+        </div>
       )}
     </div>
   );

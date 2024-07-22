@@ -1,6 +1,6 @@
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { AIRecipe } from "@/type/recipe";
 import { Link } from "react-router-dom";
-import { Card, CardHeader, CardContent } from "../ui/card";
 
 type Props = {
   aiRecipe: AIRecipe;

@@ -1,10 +1,10 @@
-import { RecipeCardList } from "@/components/custom/RecipeCardList";
 import { db } from "@/lib/firebase";
 import { AIRecipe } from "@/type/recipe";
 import { query, where, collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
+import { RecipeCardList } from "./components/RecipeCardList";
 
 export function UserRecipeListPage() {
   const params = useParams();

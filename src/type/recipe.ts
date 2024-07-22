@@ -20,12 +20,14 @@ export interface Step {
 export type AIRecipe = {
   aiRecipeId: string;
   recipe: Recipe[];
-  conditions: {
-    mealTiming: string | null;
-    cuisineGenre: string | null;
-    cookingThemes: string | null;
-    cookingDifficulties: string | null;
-  };
+  conditions: Conditions;
   createdAt: string;
   uid: string | null;
+};
+
+export type Conditions = {
+  mealTiming: string | null;
+  cuisineGenre: string | null;
+  cookingThemes: string | null;
+  cookingDifficulties: string | null;
 };
