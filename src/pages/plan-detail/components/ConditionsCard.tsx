@@ -21,11 +21,11 @@ export function ConditionsCard({ conditions, createdAt }: Props) {
         {conditions.cuisineGenre && (
           <p>料理ジャンル: {conditions.cuisineGenre}</p>
         )}
-        {conditions.cookingThemes && (
-          <p>料理テーマ: {conditions.cookingThemes}</p>
+        {conditions.cookingTheme && (
+          <p>料理テーマ: {conditions.cookingTheme}</p>
         )}
-        {conditions.cookingDifficulties && (
-          <p>料理難易度: {conditions.cookingDifficulties}</p>
+        {conditions.cookingDifficulty && (
+          <p>料理難易度: {conditions.cookingDifficulty}</p>
         )}
         <p>レシピの作成日: {new Date(createdAt).toLocaleString()}</p>
       </CardContent>

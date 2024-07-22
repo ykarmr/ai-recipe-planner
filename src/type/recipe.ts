@@ -28,6 +28,6 @@ export type AIRecipe = {
 export type Conditions = {
   mealTiming: string | null;
   cuisineGenre: string | null;
-  cookingThemes: string | null;
-  cookingDifficulties: string | null;
+  cookingTheme: string | null;
+  cookingDifficulty: string | null;
 };

@@ -9,8 +9,8 @@ type Props = {
 export function RecipeCardItem({ aiRecipe }: Props) {
   const mealTiming = aiRecipe.conditions.mealTiming;
   const cuisineGenre = aiRecipe.conditions.cuisineGenre;
-  const cookingThemes = aiRecipe.conditions.cookingThemes;
-  const cookingDifficulties = aiRecipe.conditions.cookingDifficulties;
+  const cookingThemes = aiRecipe.conditions.cookingTheme;
+  const cookingDifficulties = aiRecipe.conditions.cookingDifficulty;
 
   return (
     <Link to={`/plan-detail/${aiRecipe.aiRecipeId}`} className="block">

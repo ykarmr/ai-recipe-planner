@@ -22,8 +22,8 @@ import { recipeSchema } from "./utils/aiSchema";
 type FormData = {
   mealTiming?: SelectListItem;
   cuisineGenre?: SelectListItem;
-  cookingThemes?: SelectListItem;
-  cookingDifficulties?: SelectListItem;
+  cookingTheme?: SelectListItem;
+  cookingDifficulty?: SelectListItem;
   numberOfRecipe: number;
 };
 export function PlanRecipePage() {
@@ -47,8 +47,8 @@ export function PlanRecipePage() {
       if (
         !formData.mealTiming?.title &&
         !formData.cuisineGenre?.title &&
-        !formData.cookingThemes?.title &&
-        !formData.cookingDifficulties?.title
+        !formData.cookingTheme?.title &&
+        !formData.cookingDifficulty?.title
       ) {
         toast(
           "食事タイミング、料理ジャンル、料理テーマ、料理難易度のどれか一つは必須です"
@@ -69,11 +69,11 @@ export function PlanRecipePage() {
       const cuisineGenre = formData.cuisineGenre?.title
         ? `料理ジャンル: ${formData.cuisineGenre?.title}`
         : "";
-      const cookingThemes = formData.cookingThemes?.title
-        ? `料理テーマ: ${formData.cookingThemes?.title}`
+      const cookingThemes = formData.cookingTheme?.title
+        ? `料理テーマ: ${formData.cookingTheme?.title}`
         : "";
-      const cookingDifficulties = formData.cookingDifficulties?.title
-        ? `料理難易度: ${formData.cookingDifficulties?.title}`
+      const cookingDifficulties = formData.cookingDifficulty?.title
+        ? `料理難易度: ${formData.cookingDifficulty?.title}`
         : "";
       const prompt = `
         貴方は凄腕の料理人です。条件の内容から、レシピ情報を出力してください
@@ -104,8 +104,8 @@ export function PlanRecipePage() {
         conditions: {
           mealTiming: formData.mealTiming?.title ?? null,
           cuisineGenre: formData.cuisineGenre?.title ?? null,
-          cookingThemes: formData.cookingThemes?.title ?? null,
-          cookingDifficulties: formData.cookingDifficulties?.title ?? null,
+          cookingTheme: formData.cookingTheme?.title ?? null,
+          cookingDifficulty: formData.cookingDifficulty?.title ?? null,
         },
         createdAt: new Date().toUTCString(),
         uid: loginUser?.uid ?? null,
@@ -152,15 +152,15 @@ export function PlanRecipePage() {
             <SelectList
               list={cookingThemes}
               onSelect={changeSelectList("cookingTheme")}
-              selectValue={formData.cookingThemes}
+              selectValue={formData.cookingTheme}
             />
           </div>
           <div>
             <h2 className="text-xl font-medium mb-2">料理難易度</h2>
             <SelectList
               list={cookingDifficulties}
-              onSelect={changeSelectList("cookingDifficulties")}
-              selectValue={formData.cookingDifficulties}
+              onSelect={changeSelectList("cookingDifficulty")}
+              selectValue={formData.cookingDifficulty}
             />
           </div>
           <div>
