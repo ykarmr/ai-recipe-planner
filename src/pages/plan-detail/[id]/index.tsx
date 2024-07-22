@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
-export function PlanDetail() {
+export function PlanDetailPage() {
   const params = useParams();
   const [aiRecipe, setAIRecipe] = useState<AIRecipe | null>(null);
   const navigate = useNavigate();

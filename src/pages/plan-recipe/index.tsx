@@ -45,7 +45,7 @@ const cookingDifficulties: SelectListItem[] = [
   { id: 4, title: "プロ", desc: "プロフェッショナル向けの料理" },
 ];
 
-export function PlanRecipe() {
+export function PlanRecipePage() {
   const navigate = useNavigate();
   const { loginUser } = useAuthContext();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -72,7 +72,7 @@ export function PlanRecipe() {
         !selectCookingDifficulties?.title
       ) {
         toast(
-          "食事タイミング、料理ジャンル、料理テーマ、料理難易度のどれか一つは必須です",
+          "食事タイミング、料理ジャンル、料理テーマ、料理難易度のどれか一つは必須です"
         );
         return;
       }

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
-export function UserRecipeList() {
+export function UserRecipeListPage() {
   const params = useParams();
   const navigate = useNavigate();
   const [list, setList] = useState<AIRecipe[] | null>(null);

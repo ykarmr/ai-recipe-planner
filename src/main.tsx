@@ -3,15 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import { Toaster } from "sonner";
-import { RootPage } from "./pages/root-page.tsx";
-import { PlanRecipe } from "./pages/plan-recipe/index.tsx";
-import { PlanDetail } from "./pages/plan-detail/[id]/index.tsx";
-import "@/lib/firebase.ts";
-import { NotFound } from "./pages/not-found/index.tsx";
-import { UserRecipeList } from "./pages/user-recipe-list/index.tsx";
+import { PlanRecipePage } from "./pages/plan-recipe/index.tsx";
+import { PlanDetailPage } from "./pages/plan-detail/[id]/index.tsx";
+import { NotFoundPage } from "./pages/not-found/index.tsx";
+import { UserRecipeListPage } from "./pages/user-recipe-list/index.tsx";
 import { BaseLayout } from "./components/custom/BaseLayout.tsx";
 import { LoginGuard } from "./components/guard/LoginGuard.tsx";
-import { NotLogin } from "./pages/not-login/index.tsx";
+import { NotLoginPage } from "./pages/not-login/index.tsx";
+import { RootPage } from "./pages/root-page/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -30,15 +29,15 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/plan-recipe",
-            element: <PlanRecipe />,
+            element: <PlanRecipePage />,
           },
           {
             path: "/plan-detail/:id",
-            element: <PlanDetail />,
+            element: <PlanDetailPage />,
           },
           {
             path: "/user/:uid/recipe",
-            element: <UserRecipeList />,
+            element: <UserRecipeListPage />,
           },
         ],
       },
@@ -48,15 +47,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/not-found",
-        element: <NotFound />,
+        element: <NotFoundPage />,
       },
       {
         path: "/not-login",
-        element: <NotLogin />,
+        element: <NotLoginPage />,
       },
       {
         path: "*",
-        element: <NotFound />,
+        element: <NotFoundPage />,
       },
     ],
   },
@@ -66,5 +65,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Toaster />
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
 );
