@@ -35,7 +35,7 @@ export function PlanDetailPage() {
   }, [navigate, params.id]);
 
   return (
-    <div className="p-5 sm:p-10 ">
+    <div className="p-5 sm:p-10 w-full">
       {aiRecipe && (
         <div className="space-y-8">
           <ConditionsCard

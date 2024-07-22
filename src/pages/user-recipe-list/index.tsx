@@ -34,6 +34,8 @@ export function UserRecipeListPage() {
   }, [navigate, params.uid]);
 
   return (
-    <div className="p-4 sm:p-8">{list && <RecipeCardList list={list} />}</div>
+    <div className="p-4 sm:p-8 w-full">
+      {list && <RecipeCardList list={list} />}
+    </div>
   );
 }

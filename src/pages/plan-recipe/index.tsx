@@ -19,31 +19,36 @@ import {
 } from "./utils/options";
 import { recipeSchema } from "./utils/aiSchema";
 
+type FormData = {
+  mealTiming?: SelectListItem;
+  cuisineGenre?: SelectListItem;
+  cookingThemes?: SelectListItem;
+  cookingDifficulties?: SelectListItem;
+  numberOfRecipe: number;
+};
 export function PlanRecipePage() {
   const navigate = useNavigate();
   const { loginUser } = useAuthContext();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [selectMealTiming, setSelectMealTiming] = useState<SelectListItem>();
-  const [selectCuisineGenre, setSelectCuisineGenre] =
-    useState<SelectListItem>();
-  const [selectCookingThemes, setSelectCookingThemes] =
-    useState<SelectListItem>();
-  const [selectCookingDifficulties, setSelectCookingDifficulties] =
-    useState<SelectListItem>();
-  const [numberOfRecipe, setNumberOfRecipe] = useState<number>(1);
+
+  const [formData, setFormData] = useState<FormData>({ numberOfRecipe: 1 });
+
+  const changeSelectList = (name: string) => (item?: SelectListItem) => {
+    setFormData({ ...formData, [name]: item });
+  };
 
   const changeNumberOfRecipe = (e: ChangeEvent<HTMLInputElement>) => {
-    setNumberOfRecipe(Number(e.target.value));
+    setFormData({ ...formData, numberOfRecipe: Number(e.target.value) });
   };
 
   const generateRecipe = async () => {
     setIsLoading(true);
     try {
       if (
-        !selectMealTiming?.title &&
-        !selectCuisineGenre?.title &&
-        !selectCookingThemes?.title &&
-        !selectCookingDifficulties?.title
+        !formData.mealTiming?.title &&
+        !formData.cuisineGenre?.title &&
+        !formData.cookingThemes?.title &&
+        !formData.cookingDifficulties?.title
       ) {
         toast(
           "食事タイミング、料理ジャンル、料理テーマ、料理難易度のどれか一つは必須です"
@@ -51,24 +56,24 @@ export function PlanRecipePage() {
         return;
       }
 
-      if (numberOfRecipe < 1 || numberOfRecipe > 5) {
+      if (formData.numberOfRecipe < 1 || formData.numberOfRecipe > 5) {
         toast("献立数は1から5の間にしてください");
         return;
       }
 
       const schema = JSON.stringify(recipeSchema);
 
-      const mealTiming = selectMealTiming?.title
-        ? `食事タイミング: ${selectMealTiming?.title}`
+      const mealTiming = formData.mealTiming?.title
+        ? `食事タイミング: ${formData.mealTiming?.title}`
         : "";
-      const cuisineGenre = selectCuisineGenre?.title
-        ? `料理ジャンル: ${selectCuisineGenre?.title}`
+      const cuisineGenre = formData.cuisineGenre?.title
+        ? `料理ジャンル: ${formData.cuisineGenre?.title}`
         : "";
-      const cookingThemes = selectCookingThemes?.title
-        ? `料理テーマ: ${selectCookingThemes?.title}`
+      const cookingThemes = formData.cookingThemes?.title
+        ? `料理テーマ: ${formData.cookingThemes?.title}`
         : "";
-      const cookingDifficulties = selectCookingDifficulties?.title
-        ? `料理難易度: ${selectCookingDifficulties?.title}`
+      const cookingDifficulties = formData.cookingDifficulties?.title
+        ? `料理難易度: ${formData.cookingDifficulties?.title}`
         : "";
       const prompt = `
         貴方は凄腕の料理人です。条件の内容から、レシピ情報を出力してください
@@ -80,7 +85,7 @@ export function PlanRecipePage() {
         ${cookingDifficulties}
 
         出力内容
-        ${numberOfRecipe}つ出力
+        ${formData.numberOfRecipe}つ出力
         JSONの形式: 
         ${schema}
       `;
@@ -97,10 +102,10 @@ export function PlanRecipePage() {
         aiRecipeId,
         recipe: recipe as Recipe[],
         conditions: {
-          mealTiming: selectMealTiming?.title ?? null,
-          cuisineGenre: selectCuisineGenre?.title ?? null,
-          cookingThemes: selectCookingThemes?.title ?? null,
-          cookingDifficulties: selectCookingDifficulties?.title ?? null,
+          mealTiming: formData.mealTiming?.title ?? null,
+          cuisineGenre: formData.cuisineGenre?.title ?? null,
+          cookingThemes: formData.cookingThemes?.title ?? null,
+          cookingDifficulties: formData.cookingDifficulties?.title ?? null,
         },
         createdAt: new Date().toUTCString(),
         uid: loginUser?.uid ?? null,
@@ -117,8 +122,8 @@ export function PlanRecipePage() {
   };
 
   return (
-    <div className="flex items-center justify-center p-5 sm:p-10">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-3xl">
+    <div className="flex items-center justify-center p-5 sm:p-10 w-full">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full">
         <h2 className="font-bold text-3xl mb-4 text-center text-gray-800">
           献立を提案！！
         </h2>
@@ -130,32 +135,32 @@ export function PlanRecipePage() {
             <h2 className="text-xl font-medium mb-2">食事タイミング</h2>
             <SelectList
               list={mealTimings}
-              onSelect={setSelectMealTiming}
-              selectValue={selectMealTiming}
+              onSelect={changeSelectList("mealTiming")}
+              selectValue={formData.mealTiming}
             />
           </div>
           <div>
             <h2 className="text-xl font-medium mb-2">料理ジャンル</h2>
             <SelectList
               list={cuisineGenres}
-              onSelect={setSelectCuisineGenre}
-              selectValue={selectCuisineGenre}
+              onSelect={changeSelectList("cuisineGenre")}
+              selectValue={formData.cuisineGenre}
             />
           </div>
           <div>
             <h2 className="text-xl font-medium mb-2">料理テーマ</h2>
             <SelectList
               list={cookingThemes}
-              onSelect={setSelectCookingThemes}
-              selectValue={selectCookingThemes}
+              onSelect={changeSelectList("cookingTheme")}
+              selectValue={formData.cookingThemes}
             />
           </div>
           <div>
             <h2 className="text-xl font-medium mb-2">料理難易度</h2>
             <SelectList
               list={cookingDifficulties}
-              onSelect={setSelectCookingDifficulties}
-              selectValue={selectCookingDifficulties}
+              onSelect={changeSelectList("cookingDifficulties")}
+              selectValue={formData.cookingDifficulties}
             />
           </div>
           <div>
@@ -165,7 +170,7 @@ export function PlanRecipePage() {
               type="number"
               min={1}
               max={5}
-              value={numberOfRecipe}
+              value={formData.numberOfRecipe}
               className="w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
             />
           </div>
