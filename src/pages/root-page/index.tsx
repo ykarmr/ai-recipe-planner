@@ -5,7 +5,13 @@ export function RootPage() {
   return (
     <div className="flex flex-col items-center gap-9">
       <h1>
-        <img src="/logo.svg" alt="Logo" className="w-96 mx-auto" />
+        <img
+          src="/logo.svg"
+          alt="Logo"
+          className="w-96 mx-auto"
+          width="384"
+          height="96"
+        />
       </h1>
       <p className="text-xl text-center text-gray-800 px-4">
         こちらのアプリは提示した条件から
