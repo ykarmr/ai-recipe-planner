@@ -37,11 +37,19 @@ const router = createBrowserRouter([
           },
           {
             path: "/plan-detail/:id",
-            element: <PlanDetailPage />,
+            element: (
+              <Suspense fallback={<Loader />}>
+                <PlanDetailPage />
+              </Suspense>
+            ),
           },
           {
             path: "/user/:uid/recipe",
-            element: <UserRecipeListPage />,
+            element: (
+              <Suspense fallback={<Loader />}>
+                <UserRecipeListPage />
+              </Suspense>
+            ),
           },
         ],
       },
