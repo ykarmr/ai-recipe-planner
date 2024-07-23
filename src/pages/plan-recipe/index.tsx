@@ -9,7 +9,7 @@ import { v4 as uuid } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { AIRecipe, Recipe } from "@/type/recipe";
 import { toast } from "sonner";
-import { useAuthContext } from "@/components/provider/AuthContextProvider";
+
 import { SelectListItem, SelectList } from "./componets/SelectList";
 import {
   mealTimings,
@@ -18,6 +18,7 @@ import {
   cookingDifficulties,
 } from "./utils/options";
 import { recipeSchema } from "./utils/aiSchema";
+import { useAuthState } from "@/hooks/auth/useAuthState";
 
 type FormData = {
   mealTiming?: SelectListItem;
@@ -28,7 +29,8 @@ type FormData = {
 };
 export function PlanRecipePage() {
   const navigate = useNavigate();
-  const { loginUser } = useAuthContext();
+  const { user: loginUser } = useAuthState();
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [formData, setFormData] = useState<FormData>({ numberOfRecipe: 1 });
