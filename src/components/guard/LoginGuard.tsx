@@ -1,17 +1,17 @@
 import { ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthState } from "../../hooks/auth/useAuthState";
+import { useSWRAuthState } from "../../hooks/useSWRAuthState";
 
 export function LoginGuard({ children }: { children: ReactNode }) {
-  const { user: loginUser, status } = useAuthState();
+  const user = useSWRAuthState();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (status !== "loading" && !loginUser) {
+    if (!user) {
       navigate("/not-login");
     }
-  }, [loginUser, navigate, status]);
+  }, [navigate, user]);
 
   return children;
 }

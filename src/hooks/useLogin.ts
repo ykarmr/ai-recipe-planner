@@ -3,9 +3,11 @@ import { signInWithPopup } from "firebase/auth";
 import { getDoc, doc, setDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { useSWRAuthStateRevalidate } from "./useSWRAuthState";
 
 export function useLogin() {
   const navigate = useNavigate();
+  const revalidate = useSWRAuthStateRevalidate();
 
   const login = async () => {
     try {
@@ -22,6 +24,8 @@ export function useLogin() {
         });
       }
 
+      // 認証情報の再取得
+      await revalidate(user);
       navigate("/plan-recipe");
     } catch (e) {
       toast("ログインエラー");

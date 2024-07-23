@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
@@ -11,6 +11,8 @@ import { BaseLayout } from "./components/custom/BaseLayout.tsx";
 import { LoginGuard } from "./components/guard/LoginGuard.tsx";
 import { NotLoginPage } from "./pages/not-login/index.tsx";
 import { RootPage } from "./pages/root-page/index.tsx";
+import { Loader } from "lucide-react";
+import { SWRProvider } from "./components/provider/SWRProvider.tsx";
 
 const router = createBrowserRouter([
   {
@@ -22,9 +24,11 @@ const router = createBrowserRouter([
     children: [
       {
         element: (
-          <LoginGuard>
-            <Outlet />
-          </LoginGuard>
+          <Suspense fallback={<Loader />}>
+            <LoginGuard>
+              <Outlet />
+            </LoginGuard>
+          </Suspense>
         ),
         children: [
           {
@@ -63,7 +67,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Toaster />
-    <RouterProvider router={router} />
+    <SWRProvider>
+      <Toaster />
+      <RouterProvider router={router} />
+    </SWRProvider>
   </React.StrictMode>
 );

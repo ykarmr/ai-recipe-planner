@@ -18,7 +18,7 @@ import {
   cookingDifficulties,
 } from "./utils/options";
 import { recipeSchema } from "./utils/aiSchema";
-import { useAuthState } from "@/hooks/auth/useAuthState";
+import { useSWRAuthState } from "@/hooks/useSWRAuthState";
 
 type FormData = {
   mealTiming?: SelectListItem;
@@ -29,7 +29,7 @@ type FormData = {
 };
 export function PlanRecipePage() {
   const navigate = useNavigate();
-  const { user: loginUser } = useAuthState();
+  const user = useSWRAuthState();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -110,7 +110,7 @@ export function PlanRecipePage() {
           cookingDifficulty: formData.cookingDifficulty?.title ?? null,
         },
         createdAt: new Date().toUTCString(),
-        uid: loginUser?.uid ?? null,
+        uid: user?.uid ?? null,
       };
 
       await setDoc(doc(db, "aiRecipes", aiRecipeId), saveData);
