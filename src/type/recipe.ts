@@ -20,6 +20,8 @@ export interface Step {
 export interface Detail {
   time: string;
   detail: string;
+  temperature?: string;
+  important_points?: string;
 }
 
 export type AIRecipe = {

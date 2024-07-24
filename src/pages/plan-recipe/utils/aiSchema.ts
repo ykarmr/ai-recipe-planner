@@ -35,6 +35,14 @@ export const recipeSchema = {
                     description:
                       "この工程の詳細（具体的な手順、使用する調理器具や技法、温度、火加減、具体的な注意点などを含む）",
                   },
+                  temperature: {
+                    type: "string",
+                    description: "調理時の温度",
+                  },
+                  important_points: {
+                    type: "string",
+                    description: "具体的な注意点やコツ",
+                  },
                 },
                 required: ["time", "detail"],
               },
@@ -45,7 +53,7 @@ export const recipeSchema = {
       },
       ingredients: {
         type: "array",
-        description: "料理の食材の一覧",
+        description: "料理の食材一覧",
         items: {
           type: "object",
           properties: {
@@ -70,6 +78,6 @@ export const recipeSchema = {
         description: "この料理を作るのにかかる総費用",
       },
     },
-    required: ["name", "time", "steps", "ingredients"],
+    required: ["name", "time", "steps", "ingredients", "price"],
   },
 };
