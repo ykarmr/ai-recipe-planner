@@ -6,9 +6,9 @@ export const recipeSchema = {
         type: "string",
         description: "料理名",
       },
-      time: {
+      total_time: {
         type: "string",
-        description: "料理にかかる総時間",
+        description: "料理にかかる総時間（分単位で）",
       },
       steps: {
         type: "array",
@@ -28,7 +28,7 @@ export const recipeSchema = {
                 properties: {
                   time: {
                     type: "string",
-                    description: "この工程にかかる時間",
+                    description: "この工程にかかる時間（分単位で）",
                   },
                   detail: {
                     type: "string",
@@ -37,7 +37,7 @@ export const recipeSchema = {
                   },
                   temperature: {
                     type: "string",
-                    description: "調理時の温度",
+                    description: "調理時の温度（必要な場合）",
                   },
                   important_points: {
                     type: "string",
@@ -63,7 +63,7 @@ export const recipeSchema = {
             },
             price: {
               type: "string",
-              description: "食材の値段",
+              description: "食材の値段（円単位で）",
             },
             quantity: {
               type: "string",
@@ -73,11 +73,11 @@ export const recipeSchema = {
           required: ["name", "price", "quantity"],
         },
       },
-      price: {
+      total_price: {
         type: "string",
-        description: "この料理を作るのにかかる総費用",
+        description: "この料理を作るのにかかる総費用（円単位で）",
       },
     },
-    required: ["name", "time", "steps", "ingredients", "price"],
+    required: ["name", "total_time", "steps", "ingredients", "total_price"],
   },
 };

@@ -17,23 +17,11 @@ export function RecipeList({ recipes }: Props) {
           <CardHeader className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 rounded-t-lg">
             <h3 className="text-2xl font-bold mb-2">{recipe.name}</h3>
             <p className="text-base font-medium">
-              {recipe.price} - {recipe.time}
+              {recipe.total_price} - {recipe.total_time}
             </p>
           </CardHeader>
           <CardContent className="p-4">
             <div className="space-y-4">
-              <div>
-                <p className="text-base font-semibold mb-1">
-                  この料理にかかるお金:
-                </p>
-                <p className="text-lg text-gray-800">{recipe.price}</p>
-              </div>
-              <div>
-                <p className="text-base font-semibold mb-1">
-                  この料理の調理時間:
-                </p>
-                <p className="text-lg text-gray-800">{recipe.time}</p>
-              </div>
               <div>
                 <p className="text-base font-semibold mb-1">
                   この料理に必要な食材:

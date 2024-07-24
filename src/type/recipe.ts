@@ -1,9 +1,9 @@
 export interface Recipe {
   name: string;
-  time: string;
+  total_time: string;
   steps: Step[];
   ingredients: Ingredient[];
-  price: string;
+  total_price: string;
 }
 
 export interface Ingredient {
