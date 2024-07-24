@@ -22,28 +22,34 @@ export function RecipeList({ recipes }: Props) {
           <CardContent className="p-4">
             <div className="space-y-4">
               <div>
-                <p className="mb-1 text-base font-semibold">
-                  この料理に必要な食材:
+                <p className="mb-1 text-lg font-semibold text-gray-800">
+                  必要な食材
                 </p>
                 <ul className="list-inside list-none space-y-1">
                   {recipe.ingredients.map((item) => (
                     <li
                       key={item.name}
-                      className="rounded-lg border border-gray-300 bg-gray-50 p-4 pl-5 shadow-sm"
+                      className="flex items-center rounded-lg border border-gray-300 bg-gray-50 p-3 shadow-sm"
                     >
-                      <p className="text-lg font-semibold">{item.name}</p>
-                      <p className="mt-1 text-sm text-gray-600">
-                        ※ {item.quantity} ({item.price})
-                      </p>
+                      <div className="flex-1">
+                        <p className="text-base font-medium text-gray-800">
+                          {item.name}
+                        </p>
+                        <p className="mt-1 text-sm text-gray-500">
+                          {item.quantity} ({item.price})
+                        </p>
+                      </div>
                     </li>
                   ))}
                 </ul>
               </div>
               <div>
-                <p className="mb-2 text-base font-semibold">調理方法:</p>
+                <p className="mb-2 text-lg font-semibold text-gray-800">
+                  調理方法
+                </p>
                 {recipe.steps.map((step) => (
                   <div key={step.group} className="mb-4">
-                    <p className="mb-2 text-lg font-semibold">{step.group}</p>
+                    <p className="mb-2 text-base font-semibold">{step.group}</p>
                     <ul className="list-inside list-none space-y-3 pl-5">
                       {step.details.map((detail) => (
                         <li
