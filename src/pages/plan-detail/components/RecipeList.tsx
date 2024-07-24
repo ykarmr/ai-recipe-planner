@@ -42,22 +42,22 @@ export function RecipeList({ recipes }: Props) {
                     <ul className="list-decimal list-inside space-y-3 pl-5">
                       {step.details.map((detail) => (
                         <Fragment key={`${step.group}-${detail.detail}`}>
-                          <li className="flex flex-col bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-300">
-                            <p className="font-medium text-gray-800">
+                          <li className="list-none bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-300">
+                            <p className="font-medium text-gray-800 mt-1">
                               {detail.detail}
                             </p>
                             {detail.temperature && (
-                              <p className="text-sm text-gray-600 mb-1">
-                                {detail.temperature}
+                              <p className="text-sm text-gray-600 mt-1">
+                                ※ {detail.temperature}
                               </p>
                             )}
                             {detail.important_points && (
-                              <p className="text-sm text-gray-600 mb-1">
-                                {detail.important_points}
+                              <p className="text-sm text-gray-600 mt-1">
+                                ※ {detail.important_points}
                               </p>
                             )}
-                            <span className="text-sm text-gray-500">
-                              {detail.time}
+                            <span className="text-sm text-gray-500 mt-1">
+                              ({detail.time})
                             </span>
                           </li>
                         </Fragment>
