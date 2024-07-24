@@ -27,18 +27,9 @@ export function RecipeList({ recipes }: Props) {
                 </p>
                 <ul className="list-inside list-none space-y-1">
                   {recipe.ingredients.map((item) => (
-                    <li
-                      key={item.name}
-                      className="flex items-center rounded-lg border border-gray-300 bg-gray-50 p-3 shadow-sm"
-                    >
-                      <div className="flex-1">
-                        <p className="text-base font-medium text-gray-800">
-                          {item.name}
-                        </p>
-                        <p className="mt-1 text-sm text-gray-500">
-                          {item.quantity} ({item.price})
-                        </p>
-                      </div>
+                    <li key={item.name} className="pl-5 text-sm">
+                      <span className="font-bold">{item.name}</span>{" "}
+                      {item.quantity} ({item.price})
                     </li>
                   ))}
                 </ul>
