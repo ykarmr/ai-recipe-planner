@@ -8,7 +8,7 @@ export const recipeSchema = {
       },
       time: {
         type: "string",
-        description: "料理時間",
+        description: "料理にかかる総時間",
       },
       steps: {
         type: "array",
@@ -22,7 +22,8 @@ export const recipeSchema = {
             },
             detail: {
               type: "string",
-              description: "この工程の内容を詳細に単位なども含めて書く",
+              description:
+                "この工程の詳細（具体的な手順、使用する調理器具や技法、温度、火加減、具体的な注意点などを含む）",
             },
           },
           required: ["time", "detail"],
@@ -44,7 +45,7 @@ export const recipeSchema = {
             },
             quantity: {
               type: "string",
-              description: "食材の量",
+              description: "食材の量（具体的な計量単位で）",
             },
           },
           required: ["name", "price", "quantity"],
@@ -52,7 +53,7 @@ export const recipeSchema = {
       },
       price: {
         type: "string",
-        description: "この料理を作るのにかかる値段",
+        description: "この料理を作るのにかかる総費用",
       },
     },
     required: ["name", "time", "steps", "ingredients"],

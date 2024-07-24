@@ -66,19 +66,19 @@ export function PlanRecipePage() {
       const schema = JSON.stringify(recipeSchema);
 
       const mealTiming = formData.mealTiming?.title
-        ? `食事タイミング: ${formData.mealTiming?.title}`
+        ? `- 食事タイミング: ${formData.mealTiming?.title}`
         : "";
       const cuisineGenre = formData.cuisineGenre?.title
-        ? `料理ジャンル: ${formData.cuisineGenre?.title}`
+        ? `- 料理ジャンル: ${formData.cuisineGenre?.title}`
         : "";
       const cookingThemes = formData.cookingTheme?.title
-        ? `料理テーマ: ${formData.cookingTheme?.title}`
+        ? `- 料理テーマ: ${formData.cookingTheme?.title}`
         : "";
       const cookingDifficulties = formData.cookingDifficulty?.title
-        ? `料理難易度: ${formData.cookingDifficulty?.title}`
+        ? `- 料理難易度: ${formData.cookingDifficulty?.title}`
         : "";
       const prompt = `
-        貴方は凄腕の料理人です。条件の内容から、レシピ情報を出力してください
+        貴方は凄腕の料理人です。以下の条件に基づいて、詳細なレシピ情報をJSON形式で出力してください。
 
         条件
         ${mealTiming}
@@ -87,10 +87,12 @@ export function PlanRecipePage() {
         ${cookingDifficulties}
 
         出力内容
-        ${formData.numberOfRecipe}つ出力
-        JSONの形式: 
+        - ${formData.numberOfRecipe}つ出力
+        - JSONの形式: 
         ${schema}
       `;
+
+      console.log(prompt);
 
       const aiResponse = await generateFromGemini(prompt);
       const paresAiResponse = JSON.parse(aiResponse);
