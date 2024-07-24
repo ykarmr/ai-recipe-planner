@@ -5,7 +5,7 @@ import { Menu } from "./Menu";
 
 export function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50 p-3 flex justify-between items-center px-5">
+    <header className="fixed left-0 top-0 z-50 flex w-full items-center justify-between bg-white p-3 px-5 shadow-md">
       <Link to="/">
         <img src="/logo.svg" alt="Logo" />
       </Link>

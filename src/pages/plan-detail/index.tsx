@@ -8,7 +8,7 @@ export function PlanDetailPage() {
   const aiRecipe = useGetPlanDetail(params.id);
 
   return (
-    <div className="p-5 sm:p-10 w-full">
+    <div className="w-full p-5 sm:p-10">
       {aiRecipe && (
         <div className="space-y-8">
           <ConditionsCard

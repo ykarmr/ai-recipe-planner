@@ -8,12 +8,12 @@ export function RootPage() {
         <img
           src="/logo.svg"
           alt="Logo"
-          className="w-96 mx-auto"
+          className="mx-auto w-96"
           width="384"
           height="96"
         />
       </h1>
-      <p className="text-xl text-center text-gray-800 px-4">
+      <p className="px-4 text-center text-xl text-gray-800">
         こちらのアプリは提示した条件から
         <br />
         今日の献立をAIが提案するアプリです
@@ -23,7 +23,7 @@ export function RootPage() {
         </span>
       </p>
       <Link to="/plan-recipe">
-        <Button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow-lg transform transition hover:scale-105">
+        <Button className="transform rounded-lg bg-blue-500 px-4 py-2 text-white shadow-lg transition hover:scale-105 hover:bg-blue-600">
           今日の献立を決める
         </Button>
       </Link>

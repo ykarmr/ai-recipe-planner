@@ -7,7 +7,7 @@ type Props = {
 };
 export function ConditionsCard({ conditions, createdAt }: Props) {
   return (
-    <Card className="bg-white p-6 rounded-lg shadow-md">
+    <Card className="rounded-lg bg-white p-6 shadow-md">
       <CardHeader>
         <p className="text-lg font-semibold">
           こちらのレシピの生成条件は以下です

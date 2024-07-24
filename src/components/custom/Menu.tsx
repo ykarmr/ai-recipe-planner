@@ -26,7 +26,7 @@ export const Menu = () => {
     return (
       <Button
         onClick={login}
-        className="bg-blue-500 hover:bg-blue-600 text-white"
+        className="bg-blue-500 text-white hover:bg-blue-600"
       >
         Sign In
       </Button>
@@ -36,7 +36,7 @@ export const Menu = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="cursor-pointer hover:shadow-md transition-shadow duration-300">
+        <Avatar className="cursor-pointer transition-shadow duration-300 hover:shadow-md">
           <AvatarImage src={user.photoURL ?? ""} alt="User avatar" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>

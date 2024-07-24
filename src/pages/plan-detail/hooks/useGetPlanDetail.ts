@@ -19,7 +19,7 @@ export const useGetPlanDetail = (aiRecipeId?: string) => {
         return null;
       }
       return fetcher(aiRecipeId);
-    }
+    },
   );
   return data;
 };

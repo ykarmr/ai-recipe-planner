@@ -7,7 +7,7 @@ export function UserRecipeListPage() {
   const list = useGetRecipeList(params.uid);
 
   return (
-    <div className="p-4 sm:p-8 w-full">
+    <div className="w-full p-4 sm:p-8">
       {list && <RecipeCardList list={list} />}
     </div>
   );

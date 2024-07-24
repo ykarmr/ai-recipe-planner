@@ -14,23 +14,23 @@ export function RecipeCardItem({ aiRecipe }: Props) {
 
   return (
     <Link to={`/plan-detail/${aiRecipe.aiRecipeId}`} className="block">
-      <Card className="bg-white rounded-xl shadow-lg sm:transform sm:transition sm:hover:scale-105 sm:hover:shadow-2xl m-4 overflow-hidden">
-        <CardHeader className="p-5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+      <Card className="m-4 overflow-hidden rounded-xl bg-white shadow-lg sm:transform sm:transition sm:hover:scale-105 sm:hover:shadow-2xl">
+        <CardHeader className="bg-gradient-to-r from-blue-500 to-indigo-600 p-5 text-white">
           <p className="text-sm">
             作成日: {new Date(aiRecipe.createdAt).toLocaleString()}
           </p>
           <p className="text-sm">提案メニュー</p>
           {aiRecipe.recipe.map((item) => (
-            <h2 key={item.name} className="text-lg font-bold mt-2 truncate">
+            <h2 key={item.name} className="mt-2 truncate text-lg font-bold">
               {item.name}
             </h2>
           ))}
         </CardHeader>
         <CardContent className="p-5">
-          <div className="text-gray-700 space-y-4">
+          <div className="space-y-4 text-gray-700">
             {mealTiming && (
               <div>
-                <span className="font-semibold block text-gray-900">
+                <span className="block font-semibold text-gray-900">
                   食事タイミング
                 </span>
                 <span>{mealTiming}</span>
@@ -38,7 +38,7 @@ export function RecipeCardItem({ aiRecipe }: Props) {
             )}
             {cuisineGenre && (
               <div>
-                <span className="font-semibold block text-gray-900">
+                <span className="block font-semibold text-gray-900">
                   料理ジャンル
                 </span>
                 <span>{cuisineGenre}</span>
@@ -46,7 +46,7 @@ export function RecipeCardItem({ aiRecipe }: Props) {
             )}
             {cookingThemes && (
               <div>
-                <span className="font-semibold block text-gray-900">
+                <span className="block font-semibold text-gray-900">
                   料理テーマ
                 </span>
                 <span>{cookingThemes}</span>
@@ -54,7 +54,7 @@ export function RecipeCardItem({ aiRecipe }: Props) {
             )}
             {cookingDifficulties && (
               <div>
-                <span className="font-semibold block text-gray-900">
+                <span className="block font-semibold text-gray-900">
                   料理難易度
                 </span>
                 <span>{cookingDifficulties}</span>

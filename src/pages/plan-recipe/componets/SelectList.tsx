@@ -21,19 +21,19 @@ export function SelectList(props: Props) {
   };
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+      <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((item) => (
           <div
             key={item.id}
-            className={`p-4 border rounded-lg cursor-pointer transition-transform transform hover:scale-105 ${
+            className={`transform cursor-pointer rounded-lg border p-4 transition-transform hover:scale-105 ${
               selectValue?.id === item.id
-                ? "shadow-md border-black"
+                ? "border-black shadow-md"
                 : "hover:shadow"
             }`}
             onClick={() => handleSelect(item)}
           >
-            <h2 className="font-bold text-lg">{item.title}</h2>
-            <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
+            <h2 className="text-lg font-bold">{item.title}</h2>
+            <p className="mt-1 text-sm text-gray-500">{item.desc}</p>
           </div>
         ))}
       </div>

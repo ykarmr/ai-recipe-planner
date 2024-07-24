@@ -79,5 +79,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Toaster />
       <RouterProvider router={router} />
     </SWRProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

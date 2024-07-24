@@ -53,7 +53,7 @@ export function PlanRecipePage() {
         !formData.cookingDifficulty?.title
       ) {
         toast(
-          "食事タイミング、料理ジャンル、料理テーマ、料理難易度のどれか一つは必須です"
+          "食事タイミング、料理ジャンル、料理テーマ、料理難易度のどれか一つは必須です",
         );
         return;
       }
@@ -126,17 +126,17 @@ export function PlanRecipePage() {
   };
 
   return (
-    <div className="flex items-center justify-center p-5 sm:p-10 w-full">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full">
-        <h2 className="font-bold text-3xl mb-4 text-center text-gray-800">
+    <div className="flex w-full items-center justify-center p-5 sm:p-10">
+      <div className="w-full rounded-lg bg-white p-8 shadow-lg">
+        <h2 className="mb-4 text-center text-3xl font-bold text-gray-800">
           献立を提案！！
         </h2>
-        <p className="mt-3 text-gray-500 text-xl text-center">
+        <p className="mt-3 text-center text-xl text-gray-500">
           以下の情報を設定して、「献立を提案」を押すとレストラン情報を提示します
         </p>
         <div className="mt-10 flex flex-col gap-9">
           <div>
-            <h2 className="text-xl font-medium mb-2">食事タイミング</h2>
+            <h2 className="mb-2 text-xl font-medium">食事タイミング</h2>
             <SelectList
               list={mealTimings}
               onSelect={changeSelectList("mealTiming")}
@@ -144,7 +144,7 @@ export function PlanRecipePage() {
             />
           </div>
           <div>
-            <h2 className="text-xl font-medium mb-2">料理ジャンル</h2>
+            <h2 className="mb-2 text-xl font-medium">料理ジャンル</h2>
             <SelectList
               list={cuisineGenres}
               onSelect={changeSelectList("cuisineGenre")}
@@ -152,7 +152,7 @@ export function PlanRecipePage() {
             />
           </div>
           <div>
-            <h2 className="text-xl font-medium mb-2">料理テーマ</h2>
+            <h2 className="mb-2 text-xl font-medium">料理テーマ</h2>
             <SelectList
               list={cookingThemes}
               onSelect={changeSelectList("cookingTheme")}
@@ -160,7 +160,7 @@ export function PlanRecipePage() {
             />
           </div>
           <div>
-            <h2 className="text-xl font-medium mb-2">料理難易度</h2>
+            <h2 className="mb-2 text-xl font-medium">料理難易度</h2>
             <SelectList
               list={cookingDifficulties}
               onSelect={changeSelectList("cookingDifficulty")}
@@ -168,7 +168,7 @@ export function PlanRecipePage() {
             />
           </div>
           <div>
-            <h2 className="text-xl font-medium mb-2">献立数</h2>
+            <h2 className="mb-2 text-xl font-medium">献立数</h2>
             <Input
               onChange={changeNumberOfRecipe}
               type="number"
@@ -182,14 +182,14 @@ export function PlanRecipePage() {
 
         <div className="my-10 flex justify-end">
           {isLoading ? (
-            <Button disabled className="bg-gray-400 cursor-not-allowed">
+            <Button disabled className="cursor-not-allowed bg-gray-400">
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
               Please wait
             </Button>
           ) : (
             <Button
               onClick={generateRecipe}
-              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg shadow-lg transform transition hover:scale-105"
+              className="transform rounded-lg bg-blue-500 px-4 py-2 text-white shadow-lg transition hover:scale-105 hover:bg-blue-600"
             >
               献立を提案
             </Button>

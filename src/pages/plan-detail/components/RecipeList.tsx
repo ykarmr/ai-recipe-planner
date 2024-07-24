@@ -7,14 +7,14 @@ type Props = {
 
 export function RecipeList({ recipes }: Props) {
   return (
-    <div className="grid gap-8 grid-cols-1">
+    <div className="grid grid-cols-1 gap-8">
       {recipes.map((recipe) => (
         <Card
           key={recipe.name}
-          className="bg-white rounded-lg shadow-lg sm:transition-transform sm:transform sm:hover:scale-105"
+          className="rounded-lg bg-white shadow-lg sm:transform sm:transition-transform sm:hover:scale-105"
         >
-          <CardHeader className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-4 rounded-t-lg">
-            <h3 className="text-2xl font-bold mb-2">{recipe.name}</h3>
+          <CardHeader className="rounded-t-lg bg-gradient-to-r from-blue-500 to-indigo-600 p-4 text-white">
+            <h3 className="mb-2 text-2xl font-bold">{recipe.name}</h3>
             <p className="text-base font-medium">
               {recipe.total_price} - {recipe.total_time}
             </p>
@@ -22,17 +22,17 @@ export function RecipeList({ recipes }: Props) {
           <CardContent className="p-4">
             <div className="space-y-4">
               <div>
-                <p className="text-base font-semibold mb-1">
+                <p className="mb-1 text-base font-semibold">
                   この料理に必要な食材:
                 </p>
-                <ul className="list-inside space-y-1 list-none">
+                <ul className="list-inside list-none space-y-1">
                   {recipe.ingredients.map((item) => (
                     <li
                       key={item.name}
-                      className="pl-5 border border-gray-300 bg-gray-50 rounded-lg shadow-sm p-4"
+                      className="rounded-lg border border-gray-300 bg-gray-50 p-4 pl-5 shadow-sm"
                     >
-                      <p className="font-semibold text-lg">{item.name}</p>
-                      <p className="text-sm text-gray-600 mt-1">
+                      <p className="text-lg font-semibold">{item.name}</p>
+                      <p className="mt-1 text-sm text-gray-600">
                         ※ {item.quantity} ({item.price})
                       </p>
                     </li>
@@ -40,30 +40,30 @@ export function RecipeList({ recipes }: Props) {
                 </ul>
               </div>
               <div>
-                <p className="text-base font-semibold mb-2">調理方法:</p>
+                <p className="mb-2 text-base font-semibold">調理方法:</p>
                 {recipe.steps.map((step) => (
                   <div key={step.group} className="mb-4">
-                    <p className="font-semibold text-lg mb-2">{step.group}</p>
-                    <ul className="list-none list-inside space-y-3 pl-5">
+                    <p className="mb-2 text-lg font-semibold">{step.group}</p>
+                    <ul className="list-inside list-none space-y-3 pl-5">
                       {step.details.map((detail) => (
                         <li
                           key={`${step.group}-${detail.detail}`}
-                          className="list-none bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-300"
+                          className="list-none rounded-lg border border-gray-300 bg-gray-50 p-4 shadow-sm"
                         >
-                          <p className="font-medium text-gray-800 mt-1">
+                          <p className="mt-1 font-medium text-gray-800">
                             {detail.detail}
                           </p>
                           {detail.temperature && (
-                            <p className="text-sm text-gray-600 mt-1">
+                            <p className="mt-1 text-sm text-gray-600">
                               ※ {detail.temperature}
                             </p>
                           )}
                           {detail.important_points && (
-                            <p className="text-sm text-gray-600 mt-1">
+                            <p className="mt-1 text-sm text-gray-600">
                               ※ {detail.important_points}
                             </p>
                           )}
-                          <span className="text-sm text-gray-500 mt-1">
+                          <span className="mt-1 text-sm text-gray-500">
                             ({detail.time})
                           </span>
                         </li>
