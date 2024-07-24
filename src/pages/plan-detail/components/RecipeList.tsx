@@ -1,6 +1,5 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Recipe } from "@/type/recipe";
-import { Fragment } from "react/jsx-runtime";
 
 type Props = {
   recipes: Recipe[];
@@ -26,10 +25,16 @@ export function RecipeList({ recipes }: Props) {
                 <p className="text-base font-semibold mb-1">
                   この料理に必要な食材:
                 </p>
-                <ul className="list-disc list-inside space-y-1 pl-5 text-gray-700">
+                <ul className="list-inside space-y-1 list-none">
                   {recipe.ingredients.map((item) => (
-                    <li key={item.name} className="text-base">
-                      {item.name} {item.quantity} ({item.price})
+                    <li
+                      key={item.name}
+                      className="pl-5 border border-gray-300 bg-gray-50 rounded-lg shadow-sm p-4"
+                    >
+                      <p className="font-semibold text-lg">{item.name}</p>
+                      <p className="text-sm text-gray-600 mt-1">
+                        ※ {item.quantity} ({item.price})
+                      </p>
                     </li>
                   ))}
                 </ul>
@@ -39,28 +44,29 @@ export function RecipeList({ recipes }: Props) {
                 {recipe.steps.map((step) => (
                   <div key={step.group} className="mb-4">
                     <p className="font-semibold text-lg mb-2">{step.group}</p>
-                    <ul className="list-decimal list-inside space-y-3 pl-5">
+                    <ul className="list-none list-inside space-y-3 pl-5">
                       {step.details.map((detail) => (
-                        <Fragment key={`${step.group}-${detail.detail}`}>
-                          <li className="list-none bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-300">
-                            <p className="font-medium text-gray-800 mt-1">
-                              {detail.detail}
+                        <li
+                          key={`${step.group}-${detail.detail}`}
+                          className="list-none bg-gray-50 p-4 rounded-lg shadow-sm border border-gray-300"
+                        >
+                          <p className="font-medium text-gray-800 mt-1">
+                            {detail.detail}
+                          </p>
+                          {detail.temperature && (
+                            <p className="text-sm text-gray-600 mt-1">
+                              ※ {detail.temperature}
                             </p>
-                            {detail.temperature && (
-                              <p className="text-sm text-gray-600 mt-1">
-                                ※ {detail.temperature}
-                              </p>
-                            )}
-                            {detail.important_points && (
-                              <p className="text-sm text-gray-600 mt-1">
-                                ※ {detail.important_points}
-                              </p>
-                            )}
-                            <span className="text-sm text-gray-500 mt-1">
-                              ({detail.time})
-                            </span>
-                          </li>
-                        </Fragment>
+                          )}
+                          {detail.important_points && (
+                            <p className="text-sm text-gray-600 mt-1">
+                              ※ {detail.important_points}
+                            </p>
+                          )}
+                          <span className="text-sm text-gray-500 mt-1">
+                            ({detail.time})
+                          </span>
+                        </li>
                       ))}
                     </ul>
                   </div>
