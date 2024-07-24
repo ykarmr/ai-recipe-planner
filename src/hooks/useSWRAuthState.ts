@@ -14,7 +14,9 @@ const fetcher = async (): Promise<User | null> => {
 
 const key = "global/auth";
 export const useSWRAuthState = () => {
-  const { data } = useSWR<User | null>(key, fetcher);
+  const { data } = useSWR<User | null>(key, fetcher, {
+    revalidateOnFocus: true,
+  });
   return data;
 };
 
