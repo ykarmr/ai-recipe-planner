@@ -12,21 +12,35 @@ export const recipeSchema = {
       },
       steps: {
         type: "array",
-        description: "料理の手順",
+        description: "料理の手順のグループ",
         items: {
           type: "object",
           properties: {
-            time: {
+            group: {
               type: "string",
-              description: "この工程にかかる時間",
+              description: "手順のグループ名（例：準備、調理、仕上げ）",
             },
-            detail: {
-              type: "string",
-              description:
-                "この工程の詳細（具体的な手順、使用する調理器具や技法、温度、火加減、具体的な注意点などを含む）",
+            details: {
+              type: "array",
+              description: "グループ内の詳細な手順",
+              items: {
+                type: "object",
+                properties: {
+                  time: {
+                    type: "string",
+                    description: "この工程にかかる時間",
+                  },
+                  detail: {
+                    type: "string",
+                    description:
+                      "この工程の詳細（具体的な手順、使用する調理器具や技法、温度、火加減、具体的な注意点などを含む）",
+                  },
+                },
+                required: ["time", "detail"],
+              },
             },
           },
-          required: ["time", "detail"],
+          required: ["group", "details"],
         },
       },
       ingredients: {

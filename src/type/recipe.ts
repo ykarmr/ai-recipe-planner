@@ -13,6 +13,11 @@ export interface Ingredient {
 }
 
 export interface Step {
+  group: string;
+  details: Detail[];
+}
+
+export interface Detail {
   time: string;
   detail: string;
 }
